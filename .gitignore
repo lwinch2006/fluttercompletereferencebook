@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Misc folders and files
+.idea/
+build/
+FlutterAndDartCookbook.iml
+pubspec.lock
+main
