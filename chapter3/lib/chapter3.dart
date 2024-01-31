@@ -227,9 +227,50 @@ void typeAliases() {
 
   StringList test1 = ['a', 'b', 'c'];
   print('StringList type: ${test1.runtimeType}');
+}
 
+void unUsualConstructions() {
+  print('');
+  print('Unusual constructions');
+  var index = 0;
 
+  for (;;) {
+    print('Index: $index');
+    index++;
+    if (index >= 3) {
+      break;
+    }
+  }
 
+  var value = 1;
+
+  switch (value) {
+    world:
+    case 0:
+      print('world');
+    case 1:
+      print('hello');
+      continue world;
+    default:
+      print('no message');
+  }
+
+  outer:
+  for (var i = 0; i < 3; i++) {
+    print('outer: $i');
+
+    inner:
+    for (var j = 0; j < 3; j++) {
+      print('inner: $j');
+
+      if (j == 1) {
+        // break inner; // breaks inner loop, same as simple break
+        // break outer; // breaks outer loop, exists both loops
+        // continue inner; // continues inner loop, same as simple continue
+        // continue outer; // continues outer loop, same as break inner or simple break
+      }
+    }
+  }
 }
 
 
