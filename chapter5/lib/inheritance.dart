@@ -29,3 +29,13 @@ class ClassB extends ClassA {
 class ClassC extends ClassB {
   ClassC(super.value);
 }
+
+class ClassD {
+  ClassD.zero();
+}
+
+class ClassE extends ClassD {
+  // ClassE(); // Compile time error
+  ClassE() : super.zero();
+}
+
