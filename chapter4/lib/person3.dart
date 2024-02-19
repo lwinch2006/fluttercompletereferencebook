@@ -11,9 +11,8 @@ class Person3 {
   // }
 
   Person3(String firstName, String lastName) :
-    this.firstName = firstName,
-    this.lastName = lastName
-    {}
+    firstName = firstName,
+    lastName = lastName;
 
   @override
   String toString() => '$firstName $lastName';
