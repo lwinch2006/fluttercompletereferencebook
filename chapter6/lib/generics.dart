@@ -6,5 +6,9 @@ class DataCache<T> {
   const DataCache(this.data, this.creationTime);
 }
 
-
+// Generic class restricted to just numbers
+class NumberCache<T extends num> {
+  final T number;
+  const NumberCache(this.number);
+}
 
