@@ -147,3 +147,16 @@ void collections3() {
   print('map11: $map11');
 }
 
+void collections4() {
+  final list1 = List<int>.of([1,2,3]);
+  final list2 = <Object>[1,2,3];
+  final list3 = List<int>.from(list2);
+
+  print('list1: $list1');
+  print('list2: $list2');
+  print('list3: $list3');
+
+}
+
+
+
