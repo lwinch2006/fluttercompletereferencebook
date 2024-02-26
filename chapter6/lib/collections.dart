@@ -148,6 +148,8 @@ void collections3() {
 }
 
 void collections4() {
+  print('of() and from()');
+
   final list1 = List<int>.of([1,2,3]);
   final list2 = <Object>[1,2,3];
   final list3 = List<int>.from(list2);
@@ -155,8 +157,51 @@ void collections4() {
   print('list1: $list1');
   print('list2: $list2');
   print('list3: $list3');
+}
+
+void collections5() {
+  print('where, map, toList, reduce');
+
+  final list1 = List<int>.generate(10, (index) => index);
+
+  final list2 = list1
+      .where((element) => element.isEven)
+      .map((value) => '$value')
+      .toList();
+
+  final value1 = list1.reduce((value, element) => value + element);
+  final value2 = list1.fold<int>(0, (currentNumber, element) => currentNumber + '$element'.length);
+
+  print('list1: $list1');
+  print('list2: $list2');
+  print('value1: $value1');
+  print('value2: $value2');
+}
+
+class A {
 
 }
+
+class B extends A {
+
+}
+
+void collections6() {
+  final List<A> list1 = <A>[];
+  final List<A> list2 = <B>[];
+  // final List<B> list3 = <A>[]; // Compile time error.
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
