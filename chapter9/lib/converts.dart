@@ -13,7 +13,7 @@ void func2() {
 
   final stream = Stream<String>.periodic(Duration(seconds: 1), (int tick) {
     return '$tick';
-  }).take(5);
+  }).take(3);
 
   encoder.bind(stream).listen((event) {
     print(event[0]);
