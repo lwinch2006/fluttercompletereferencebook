@@ -1,24 +1,9 @@
-import 'package:chapter9/testing.dart';
-import 'package:test/test.dart';
+import 'testing_calculator.dart';
+import 'testing_custom_matcher.dart';
+import 'testing_futures_and_streams.dart';
 
 void main() {
-  const calc = Calculator();
-
-  group('Testing calculator functions', () {
-    test('Testing addition', () {
-      expect(calc.sum(2, 3), equals(5));
-    });
-
-    test('Testing subtraction', () {
-      expect(calc.subtract(2, 3), equals(-1));
-    });
-
-    test('Testing multiplication', () {
-      expect(calc.multiply(2, 3), equals(6));
-    });
-
-    test('Testing division', () {
-      expect(calc.divide(10, 4), equals(2.5));
-    });
-  });
+  testingCalculator();
+  testingCustomMatcher();
+  testingFuturesAndStreams();
 }
