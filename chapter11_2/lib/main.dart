@@ -1,4 +1,4 @@
-import 'package:chapter11_2/layout.dart';
+import 'package:chapter11_2/my_layout.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       debugShowCheckedModeBanner: false,
-      home: const Layout(title: 'Flutter Demo Home Page'),
+      home: const MyLayout(title: 'Flutter Demo Home Page'),
     );
   }
 }

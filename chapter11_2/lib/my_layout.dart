@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Layout extends StatefulWidget {
+class MyLayout extends StatefulWidget {
   final String title;
 
-  const Layout({super.key, required this.title});
+  const MyLayout({super.key, required this.title});
 
   @override
-  State<Layout> createState() => _LayoutState();
+  State<MyLayout> createState() => _MyLayoutState();
 }
 
-class _LayoutState extends State<Layout> {
+class _MyLayoutState extends State<MyLayout> {
   int _counter = 0;
   int _currentPageIndex = 0;
 
