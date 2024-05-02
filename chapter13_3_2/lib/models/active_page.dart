@@ -1,8 +1,15 @@
+final class Constants {
+  static const String homePagePath = '/';
+  static const String aboutPagePath = '/about';
+  static const String todosPagePath = '/todos';
+  static const String errorPagePath = '/error';
+}
+
 enum ActivePage {
-  homePage('/'),
-  aboutPage('/about'),
-  todosPage('/todos'),
-  error('/error');
+  homePage(Constants.homePagePath),
+  aboutPage(Constants.aboutPagePath),
+  todosPage(Constants.todosPagePath),
+  errorPage(Constants.errorPagePath);
 
   final String path;
   const ActivePage(this.path);

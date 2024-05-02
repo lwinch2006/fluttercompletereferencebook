@@ -1,11 +1,16 @@
-import 'package:chapter13_3_2/models/active_page.dart';
-import 'package:chapter13_3_2/navigation_state_widget.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
   final String title;
+  final Function onNavigateToHomePage;
+  final Function onNavigateToTodosPage;
 
-  const AboutPage({super.key, required this.title});
+  const AboutPage({
+    super.key,
+    required this.title,
+    required this.onNavigateToHomePage,
+    required this.onNavigateToTodosPage
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +49,10 @@ class AboutPage extends StatelessWidget {
         onTap: (int selectedIndex) {
           switch (selectedIndex) {
             case 0:
-              context.navigationState.pagesStack.add(ActivePage.homePage);
-              context.navigationState.currentPage.value = ActivePage.homePage;
+              onNavigateToHomePage();
               break;
             case 1:
-              context.navigationState.pagesStack.add(ActivePage.todosPage);
-              context.navigationState.currentPage.value = ActivePage.todosPage;
+              onNavigateToTodosPage();
               break;
           }
         },

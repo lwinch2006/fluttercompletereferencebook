@@ -1,12 +1,18 @@
 import 'package:chapter13_3_2/models/active_page.dart';
 import 'package:chapter13_3_2/models/todo_item.dart';
-import 'package:chapter13_3_2/navigation_state_widget.dart';
 import 'package:flutter/material.dart';
 
 class TodosPage extends StatefulWidget {
   final String title;
+  final Function onNavigateToHomePage;
+  final Function onNavigateToAboutPage;
 
-  const TodosPage({super.key, required this.title});
+  const TodosPage({
+    super.key,
+    required this.title,
+    required this.onNavigateToHomePage,
+    required this.onNavigateToAboutPage
+  });
 
   @override
   State<TodosPage> createState() => _TodosPageState();
@@ -57,12 +63,10 @@ class _TodosPageState extends State<TodosPage> {
         onTap: (int selectedIndex) {
           switch (selectedIndex) {
             case 0:
-              context.navigationState.pagesStack.add(ActivePage.homePage);
-              context.navigationState.currentPage.value = ActivePage.homePage;
+              widget.onNavigateToHomePage();
               break;
             case 2:
-              context.navigationState.pagesStack.add(ActivePage.aboutPage);
-              context.navigationState.currentPage.value = ActivePage.aboutPage;
+              widget.onNavigateToAboutPage();
               break;
           }
         },

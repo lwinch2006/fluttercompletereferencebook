@@ -1,10 +1,17 @@
 import 'package:chapter13_3_2/models/active_page.dart';
-import 'package:chapter13_3_2/navigation_state_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
   final String title;
+  final Function onNavigateToAboutPage;
+  final Function onNavigateToTodosPage;
+
+  const HomePage({
+    super.key,
+    required this.title,
+    required this.onNavigateToAboutPage,
+    required this.onNavigateToTodosPage
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -65,12 +72,10 @@ class _HomePageState extends State<HomePage> {
         onTap: (int selectedIndex) {
           switch (selectedIndex) {
             case 1:
-              context.navigationState.pagesStack.add(ActivePage.todosPage);
-              context.navigationState.currentPage.value = ActivePage.todosPage;
+              widget.onNavigateToTodosPage();
               break;
             case 2:
-              context.navigationState.pagesStack.add(ActivePage.aboutPage);
-              context.navigationState.currentPage.value = ActivePage.aboutPage;
+              widget.onNavigateToAboutPage();
               break;
           }
         },
