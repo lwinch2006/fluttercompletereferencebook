@@ -8,24 +8,16 @@ import 'package:flutter/material.dart';
 class CustomRouterDelegate extends RouterDelegate<ActivePage>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<ActivePage> {
   final _navigatorKey = GlobalKey<NavigatorState>();
-  var _isHome = true, _isAbout = false, _isTodos = false;
+
+  ActivePage _currentPage = ActivePage.homePage;
+  final List<ActivePage> _pagesStack = <ActivePage>[ActivePage.homePage];
 
   @override
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
-  bool get _isError => !_isHome && !_isAbout && !_isTodos;
-
   @override
   ActivePage? get currentConfiguration {
-    if (_isHome) {
-      return ActivePage.homePage;
-    } else if (_isAbout) {
-      return ActivePage.aboutPage;
-    } else if (_isTodos) {
-      return ActivePage.todosPage;
-    }
-
-    return ActivePage.errorPage;
+    return _currentPage;
   }
 
   @override
@@ -44,12 +36,7 @@ class CustomRouterDelegate extends RouterDelegate<ActivePage>
           if (!route.didPop(result)) {
             return false;
           }
-
-
-
-
-
-
+          _pagesStack.removeLast();
           return true;
         },
       ),
@@ -58,25 +45,31 @@ class CustomRouterDelegate extends RouterDelegate<ActivePage>
 
   @override
   Future<void> setNewRoutePath(ActivePage configuration) async {
+    if (configuration == _currentPage) {
+      return;
+    }
+
     switch (configuration.path) {
       case Constants.homePagePath:
-        _isHome = true;
-        _isAbout = _isTodos = false;
+        _currentPage = ActivePage.homePage;
+        _pagesStack.add(ActivePage.homePage);
         break;
 
       case Constants.aboutPagePath:
-        _isAbout = true;
-        _isHome = _isTodos = false;
+        _currentPage = ActivePage.aboutPage;
+        _pagesStack.add(ActivePage.aboutPage);
         break;
 
       case Constants.todosPagePath:
-        _isTodos = true;
-        _isHome = _isAbout = false;
+        _currentPage = ActivePage.todosPage;
+        _pagesStack.add(ActivePage.todosPage);
         break;
 
       case Constants.errorPagePath:
       default:
-        _isHome = _isAbout = _isTodos = false;
+        _currentPage = ActivePage.errorPage;
+        _pagesStack.clear();
+        _pagesStack.add(ActivePage.errorPage);
         break;
     }
   }
@@ -84,64 +77,66 @@ class CustomRouterDelegate extends RouterDelegate<ActivePage>
   List<Page<dynamic>> _getNavigatorPages() {
     var result = <Page<dynamic>>[];
 
-    if (_isError) {
-      result.add(const MaterialPage(
-        key: ValueKey('ErrorPage'),
-        child: ErrorPage(
-            title: 'Flutter Demo Error Page',
-            errorDetails: 'Route has not been found'),
-      ));
-    } else if (_isHome) {
-      result.add(MaterialPage(
-        key: const ValueKey('HomePage'),
-        child: HomePage(
-          title: 'Flutter Demo Home Page',
-          onNavigateToAboutPage: () {
-            _isAbout = true;
-            _isHome = _isTodos = false;
-            notifyListeners();
-          },
-          onNavigateToTodosPage: () {
-            _isTodos = true;
-            _isHome = _isAbout = false;
-            notifyListeners();
-          },
-        ),
-      ));
-    } else if (_isAbout) {
-      result.add(MaterialPage(
-        key: const ValueKey('AboutPage'),
-        child: AboutPage(
-          title: 'Flutter Demo About Page',
-          onNavigateToHomePage: () {
-            _isHome = true;
-            _isAbout = _isTodos = false;
-            notifyListeners();
-          },
-          onNavigateToTodosPage: () {
-            _isTodos = true;
-            _isHome = _isAbout = false;
-            notifyListeners();
-          },
-        ),
-      ));
-    } else if (_isTodos) {
-      result.add(MaterialPage(
-        key: const ValueKey('TodosPage'),
-        child: TodosPage(
-          title: 'Flutter Demo Todos Page',
-          onNavigateToHomePage: () {
-            _isHome = true;
-            _isAbout = _isTodos = false;
-            notifyListeners();
-          },
-          onNavigateToAboutPage: () {
-            _isAbout = true;
-            _isHome = _isTodos = false;
-            notifyListeners();
-          },
-        ),
-      ));
+    for (var activePage in _pagesStack) {
+      Page<dynamic> page;
+      switch (activePage) {
+        case ActivePage.homePage:
+          page = MaterialPage(
+              child: HomePage(
+                title: 'Flutter Demo Home Page',
+                onNavigateToAboutPage: () {
+                  _currentPage = ActivePage.aboutPage;
+                  _pagesStack.add(ActivePage.aboutPage);
+                  notifyListeners();
+                },
+                onNavigateToTodosPage: () {
+                  _currentPage = ActivePage.todosPage;
+                  _pagesStack.add(ActivePage.todosPage);
+                  notifyListeners();
+                },
+              ));
+          break;
+        case ActivePage.todosPage:
+          page = MaterialPage(
+              child: TodosPage(
+                title: 'Flutter Demo Todos Page',
+                onNavigateToHomePage: () {
+                  _currentPage = ActivePage.homePage;
+                  _pagesStack.add(ActivePage.homePage);
+                  notifyListeners();
+                },
+                onNavigateToAboutPage: () {
+                  _currentPage = ActivePage.aboutPage;
+                  _pagesStack.add(ActivePage.aboutPage);
+                  notifyListeners();
+                },
+              ));
+          break;
+        case ActivePage.aboutPage:
+          page = MaterialPage(
+              child: AboutPage(
+                title: 'Flutter Demo About Page',
+                onNavigateToHomePage: () {
+                  _currentPage = ActivePage.homePage;
+                  _pagesStack.add(ActivePage.homePage);
+                  notifyListeners();
+                },
+                onNavigateToTodosPage: () {
+                  _currentPage = ActivePage.todosPage;
+                  _pagesStack.add(ActivePage.todosPage);
+                  notifyListeners();
+                },
+              ));
+          break;
+        case ActivePage.errorPage:
+          page = const MaterialPage(
+              child: ErrorPage(
+                  title: 'Flutter Demo Error Page',
+                  errorDetails: 'Route has not been found'));
+          break;
+      }
+
+      result.add(page);
     }
 
     return result;
