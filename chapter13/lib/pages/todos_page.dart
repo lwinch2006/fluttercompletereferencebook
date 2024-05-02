@@ -33,13 +33,14 @@ class _TodosPageState extends State<TodosPage> {
   void showTodoDetailsWithPushNamed(int selectedIndex) async {
     debugPrint('Using pushName() method');
 
-    var response = await Navigator.of(context).pushNamed(todoDetailsPageRouteName,
+    var response = await Navigator.of(context).pushNamed(
+        todoDetailsPageRouteName,
         arguments: todoItems[selectedIndex]) as String;
 
     debugPrint(response);
   }
 
-  void showTodoDetailsWithInteritedWidget(int selectedIndex) async {
+  void showTodoDetailsWithInheritedWidget(int selectedIndex) async {
     debugPrint('Using pushNamed() method with InheritedWidget');
     if (!mounted) {
       return;
@@ -48,8 +49,8 @@ class _TodosPageState extends State<TodosPage> {
     var appState = AppStateWidget.of(context).appState;
     appState.todoItemsIndex = selectedIndex;
 
-    var response = await Navigator.of(context).pushNamed(todoDetailsPageRouteName,
-        arguments: todoItems[selectedIndex]) as String;
+    var response = await Navigator.of(context)
+        .pushNamed(todoDetailsPageRouteName) as String;
 
     debugPrint(response);
   }
@@ -78,7 +79,7 @@ class _TodosPageState extends State<TodosPage> {
               // This method can be difficult to use when passing arguments between many Routes/Pages
               // showTodoDetailsWithPushNamed(index);
 
-              showTodoDetailsWithInteritedWidget(index);
+              showTodoDetailsWithInheritedWidget(index);
             },
           );
         },

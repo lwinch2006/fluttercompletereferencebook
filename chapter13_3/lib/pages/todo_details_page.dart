@@ -1,5 +1,3 @@
-import 'package:chapter13/app_state_widget.dart';
-import 'package:chapter13/models/todo_item.dart';
 import 'package:flutter/material.dart';
 
 class TodoDetailsPage extends StatelessWidget {
@@ -16,8 +14,6 @@ class TodoDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final todoItem = ModalRoute.of(context)!.settings.arguments! as TodoItem;
-    final appState = AppStateWidget.of(context).appState;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,14 +31,10 @@ class TodoDetailsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              //'Title: $todoTitle',
-              //'Title: ${todoItem.title}',
-                'Title: ${appState.todoItems[appState.todoItemsIndex].title}'
+              'Title: $todoTitle',
             ),
             Text(
-              //'Details: $todoDetails',
-              //'Details: ${todoItem.details}',
-              'Details: ${appState.todoItems[appState.todoItemsIndex].details}',
+              'Details: $todoDetails',
             ),
           ],
         ),

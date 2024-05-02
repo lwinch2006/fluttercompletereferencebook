@@ -5,7 +5,8 @@ void collections1() {
   print('lists');
 
   // dynamic list/array
-  const list1 = [1, 2, 3];
+  final list1 = [1, 2, 3];
+  list1.add(4);
   print('list1: $list1');
 
   const list2 = <int>[1, 2, 3];
