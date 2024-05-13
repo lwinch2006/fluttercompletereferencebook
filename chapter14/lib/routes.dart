@@ -1,5 +1,9 @@
 
 import 'package:chapter14/pages/home_page.dart';
+import 'package:chapter14/pages/page1_page.dart';
+import 'package:chapter14/pages/page2_page.dart';
+import 'package:chapter14/pages/page3_page.dart';
+import 'package:chapter14/pages/page4_page.dart';
 import 'package:go_router/go_router.dart';
 
 const homePagePath = '/';
@@ -17,27 +21,27 @@ GoRouter generateRouter() {
       GoRoute(
         path: homePagePath,
         builder: (context, state) =>
-        const HomePage(title: 'Flutter Demo Home Page'),
+        const HomePage(title: 'Container with Row of Icons'),
       ),
       GoRoute(
         path: page1Path,
         builder: (context, state) =>
-        const TodosPage(title: 'Flutter Demo Todos Page'),
+        const Page1(title: 'Row, Column, Expanded, Flexible, Wrap, ConstrainedBox widgets'),
       ),
       GoRoute(
         path: page2Path,
         builder: (context, state) =>
-        const AboutPage(title: 'Flutter Demo About Page'),
+        const Page2(title: 'Table widget'),
       ),
       GoRoute(
         path: page3Path,
         builder: (context, state) =>
-        const AboutPage(title: 'Flutter Demo About Page'),
+        const Page3(title: 'Flutter Demo About Page'),
       ),
       GoRoute(
         path: page4Path,
         builder: (context, state) =>
-        const AboutPage(title: 'Flutter Demo About Page'),
+        const Page4(title: 'Flutter Demo About Page'),
       ),
     ],
   );

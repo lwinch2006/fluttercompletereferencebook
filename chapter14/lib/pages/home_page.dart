@@ -1,4 +1,7 @@
+import 'package:chapter14/components/chapter14_bottom_navigation_bar.dart';
+import 'package:chapter14/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -10,14 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   final container = Container(
     color: Colors.grey,
     width: 50,
@@ -36,13 +31,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
             Container(
               width: 200,
               height: 60,
@@ -65,105 +53,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Oversizing'),
-                SizedBox(
-                  width: 160,
-                  child: Row(
-                    children: [
-                      container,
-                      container,
-                      container,
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Expanded widget'),
-                SizedBox(
-                  width: 200,
-                  child: Row(
-                    // Fills all available space
-                    children: [
-                      Expanded(child: container),
-                      Expanded(child: container),
-                      Expanded(child: container),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Flexible widget'),
-                SizedBox(
-                  width: 200,
-                  child: Row(
-                    // Does not fill all available space
-                    children: [
-                      Flexible(child: container),
-                      Flexible(child: container),
-                      Flexible(child: container),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Wrap widget'),
-                SizedBox(
-                  width: 160,
-                  child: Wrap(
-                    children: [
-                      container,
-                      container,
-                      container,
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Table widget'),
-                Table(
-                  defaultColumnWidth: const FixedColumnWidth(60),
-                  children: [
-                    for (var i = 0; i < 5; i++)
-                      TableRow(
-                        children: [
-                          for (var j = 0; j < 10; j++)
-                            Center(
-                              child: Container(
-                                margin: const EdgeInsets.all(5),
-                                padding: const EdgeInsets.all(5),
-                                color: Colors.black26,
-                                child: Text('$i, $j'),
-                              ),
-                            )
-                        ]
-                      )
-                  ],
-                )
-              ],
-            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      bottomNavigationBar: Chapter14BottomNavigationBar(
+          currentSelectedIndex: 0, context: context),
     );
   }
 }
