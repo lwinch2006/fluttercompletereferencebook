@@ -30,63 +30,115 @@ class _Page3State extends State<Page3> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final orientationAsString =
+        MediaQuery.of(context).orientation == Orientation.landscape
+            ? 'landscape'
+            : 'portrait';
+
+    final textScaleFactor =
+        WidgetsBinding.instance.platformDispatcher.textScaleFactor;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(child: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth > doubleColumnBreakpoint) {
-            var increment = 0;
-            return SizedBox(
-              width: 400,
-              child: ListView.builder(
-                  itemCount: _items.length,
-                  itemBuilder: (context, index) {
-                    if (index + increment >= _items.length) {
-                      return null;
-                    }
-
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                          SizedBox(
-                            width: 200,
-                            child: ListTile(
-                              leading: const Icon(Icons.add_box_outlined),
-                              title: Text(_items[index + increment]),
-                              onTap: () {},
-                            ),
-                          ),
-                        if (index + increment < _items.length-1)
-                          SizedBox(
-                            width: 200,
-                            child: ListTile(
-                              leading: const Icon(Icons.add_box_outlined),
-                              title: Text(_items[index + ++increment]),
-                              onTap: () {},
-                            ),
-                          )
-                      ],
-                    );
-                  }),
-            );
-          }
-
-          return SizedBox(
-            width: 200,
-            child: ListView.builder(
-              itemCount: _items.length,
-              itemBuilder: (context, index) => ListTile(
-                leading: const Icon(Icons.add_box_outlined),
-                title: Text(_items[index]),
-                onTap: () {},
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+                'Screen size (logical pixels): ${size.width}x${size.height}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
+            ConstrainedBox(
+              constraints: BoxConstraints.loose(Size(200, 200)),
+              child: const AspectRatio(
+                aspectRatio: 16 / 9,
+                child: ColoredBox(
+                  color: Colors.amberAccent,
+                  child: Center(
+                    child: Text('Ratio: 16:9'),
+                  ),
+                ),
               ),
             ),
-          );
-        },
-      )),
+            const SizedBox(
+              width: 50,
+              height: 50,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Icon(Icons.home),
+              ),
+            ),
+            Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.lightBlue, width: 2)),
+                child: const Align(
+                  alignment: Alignment.topLeft,
+                  child: FractionallySizedBox(
+                    widthFactor: 1 / 4,
+                    heightFactor: 1 / 4,
+                    child: ColoredBox(color: Colors.amberAccent),
+                  ),
+                )
+            ),
+            Flexible(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth > doubleColumnBreakpoint) {
+                    var increment = 0;
+                    return SizedBox(
+                      width: 400,
+                      child: ListView.builder(
+                          itemCount: _items.length,
+                          itemBuilder: (context, index) {
+                            if (index + increment >= _items.length) {
+                              return null;
+                            }
+
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 200,
+                                  child: ListTile(
+                                    leading: const Icon(Icons.add_box_outlined),
+                                    title: Text(_items[index + increment]),
+                                    onTap: () {},
+                                  ),
+                                ),
+                                if (index + increment < _items.length - 1)
+                                  SizedBox(
+                                    width: 200,
+                                    child: ListTile(
+                                      leading:
+                                          const Icon(Icons.add_box_outlined),
+                                      title: Text(_items[index + ++increment]),
+                                      onTap: () {},
+                                    ),
+                                  )
+                              ],
+                            );
+                          }),
+                    );
+                  }
+                  return SizedBox(
+                    width: 200,
+                    child: ListView.builder(
+                      itemCount: _items.length,
+                      itemBuilder: (context, index) => ListTile(
+                        leading: const Icon(Icons.add_box_outlined),
+                        title: Text(_items[index]),
+                        onTap: () {},
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: Chapter14BottomNavigationBar(
           currentSelectedIndex: 3, context: context),
     );

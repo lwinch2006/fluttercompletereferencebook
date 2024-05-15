@@ -31,6 +31,26 @@ class Chapter14BottomNavigationBar extends BottomNavigationBar {
               icon: Icon(Icons.article),
               label: 'Page 4',
             ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: 'Page 5',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: 'Page 6',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: 'Page 7',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: 'Page 8',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: 'Page 9',
+            ),
           ],
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.amber[800],
