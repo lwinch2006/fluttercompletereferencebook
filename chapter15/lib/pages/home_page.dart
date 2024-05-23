@@ -1,7 +1,7 @@
 import 'package:chapter15/components/chapter15_bottom_navigation_bar.dart';
 import 'package:chapter15/extensions/build_context_extensions.dart';
 import 'package:chapter15/extensions/value_notifier_extensions.dart';
-import 'package:chapter15/l10n/l10n.dart';
+import 'package:chapter15/l10n/l10n_extensions.dart';
 import 'package:chapter15/models/locales.dart';
 import 'package:flutter/material.dart';
 

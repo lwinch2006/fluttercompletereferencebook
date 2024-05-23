@@ -1,5 +1,5 @@
 
-import 'package:chapter15/l10n/l10n.dart';
+import 'package:chapter15/l10n/l10n_extensions.dart';
 import 'package:flutter/material.dart';
 
 extension ValueNotifierLocaleExtensions on ValueNotifier<Locale> {

@@ -1,6 +1,6 @@
 import 'package:chapter15/extensions/build_context_extensions.dart';
 import 'package:chapter15/state/locale_state_widget.dart';
-import 'package:chapter15/l10n/l10n.dart';
+import 'package:chapter15/l10n/l10n_extensions.dart';
 import 'package:chapter15/models/locales.dart';
 import 'package:chapter15/routes.dart';
 import 'package:flutter/material.dart';
