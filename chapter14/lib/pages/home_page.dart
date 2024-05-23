@@ -1,7 +1,5 @@
 import 'package:chapter14/components/chapter14_bottom_navigation_bar.dart';
-import 'package:chapter14/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
