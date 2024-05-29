@@ -3,5 +3,66 @@
   "page": "Side",
   "helloWorld": "Hei Verden",
   "english": "Engelsk",
-  "norwegian": "Norsk"
+  "norwegian": "Norsk",
+  "localization": "Lokalisering",
+  "numberFormatters": "Tallformatere",
+  "dateAndTimeFormatters": "Dato- og tidsformatere",
+  "accessibility": "Tilgjengelighet",
+  "deepDive": "Dypdykk",
+  "hello": "Hei, {userName}",
+  "@hello": {
+    "placeholders" : {
+      "userName": {
+        "type": "String"
+      }
+    }
+  },
+  "peopleCount": "{count, plural, =0{ikke noen} =1{en person} other{{count} personer}}",
+  "@peopleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
+  },
+  "birthday": "Jeg har bursdag den {date}",
+  "@birthday": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "EEEE, dd MMMM yyyy",
+        "isCustomDateFormat": "true"
+      }
+    }
+  },
+  "genderPronounce": "{gender, select, male{Han} female{Hun} other{Den}}",
+  "@genderPronounce": {
+    "placeholders": {
+      "gender": {
+        "type": "String"
+      }
+    }
+  },
+  "balance": "Konto beholdning: {value}",
+  "@balance": {
+    "placeholders": {
+      "value": {
+        "type": "double",
+        "format": "compactSimpleCurrency"
+      }
+    }
+  },
+  "balanceWithSmall": "Konto beholdning: {value}",
+  "@balanceWithSmall": {
+    "placeholders": {
+      "value": {
+        "type": "double",
+        "format": "currency",
+        "optionalParameters": {
+          "decimalDigits": 2
+        }
+      }
+    }
+  }
 }

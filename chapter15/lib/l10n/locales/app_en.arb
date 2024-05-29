@@ -3,5 +3,66 @@
   "page": "Page",
   "helloWorld": "Hello World",
   "english": "English",
-  "norwegian": "Norwegian"
+  "norwegian": "Norwegian",
+  "localization": "Localization",
+  "numberFormatters": "Number formatters",
+  "dateAndTimeFormatters": "Date and time formatters",
+  "accessibility": "Accessibility",
+  "deepDive": "Deep dive",
+  "hello": "Hello, {userName}",
+  "@hello": {
+    "placeholders" : {
+      "userName": {
+        "type": "String"
+      }
+    }
+  },
+  "peopleCount": "{count, plural, =0{no one} =1{one person} other{{count} people}}",
+  "@peopleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
+  },
+  "birthday": "My birthday is on {date}",
+  "@birthday": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "EEEE, dd MMMM yyyy",
+        "isCustomDateFormat": "true"
+      }
+    }
+  },
+  "genderPronounce": "{gender, select, male{He} female{She} other{It}}",
+  "@genderPronounce": {
+    "placeholders": {
+      "gender": {
+        "type": "String"
+      }
+    }
+  },
+  "balance": "Account balance: {value}",
+  "@balance": {
+    "placeholders": {
+      "value": {
+        "type": "double",
+        "format": "compactSimpleCurrency"
+      }
+    }
+  },
+  "balanceWithSmall": "Account balance: {value}",
+  "@balanceWithSmall": {
+    "placeholders": {
+      "value": {
+        "type": "double",
+        "format": "currency",
+        "optionalParameters": {
+          "decimalDigits": 2
+        }
+      }
+    }
+  }
 }

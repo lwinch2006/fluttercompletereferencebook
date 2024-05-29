@@ -1,8 +1,5 @@
-
-
-
-
-
+import 'package:chapter15/extensions/build_context_extensions.dart';
+import 'package:chapter15/extensions/locale_extensions.dart';
 import 'package:chapter15/pages/home_page.dart';
 import 'package:chapter15/pages/page1_page.dart';
 import 'package:chapter15/pages/page2_page.dart';
@@ -13,6 +10,7 @@ import 'package:chapter15/pages/page6_page.dart';
 import 'package:chapter15/pages/page7_page.dart';
 import 'package:chapter15/pages/page8_page.dart';
 import 'package:chapter15/pages/page9_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 const homePagePath = '/';
@@ -31,27 +29,30 @@ GoRouter generateRouter() {
     initialLocation: homePagePath,
     routes: [
       GoRoute(
-        path: homePagePath,
-        builder: (context, state) =>
-        const HomePage(title: 'Localization'),
-      ),
+          path: homePagePath,
+          builder: (context, state) {
+            return HomePage(
+                title:
+                    '${context.l10n.localization} - ${Localizations.localeOf(context).getLocaleFullName(context)}');
+                    // '${context.customL10n.localization} - ${Localizations.localeOf(context).getLocaleFullName(context)}');
+          }),
       GoRoute(
         path: page1Path,
-        builder: (context, state) => const Page1(
+        builder: (context, state) => Page1(
             title:
-            'Row, Column, Expanded, Flexible, Wrap, ConstrainedBox widgets'),
+                context.l10n.numberFormatters),
       ),
       GoRoute(
         path: page2Path,
-        builder: (context, state) => const Page2(title: 'Table widget'),
+        builder: (context, state) => Page2(title: context.l10n.dateAndTimeFormatters),
       ),
       GoRoute(
         path: page3Path,
-        builder: (context, state) => const Page3(title: 'Responsive layouts'),
+        builder: (context, state) => Page3(title: context.l10n.accessibility),
       ),
       GoRoute(
         path: page4Path,
-        builder: (context, state) => const Page4(title: 'Scrollable widgets'),
+        builder: (context, state) => Page4(title: context.l10n.deepDive),
       ),
       GoRoute(
         path: page5Path,
@@ -71,7 +72,8 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page9Path,
-        builder: (context, state) => const Page9(title: 'Scrolling and overlays'),
+        builder: (context, state) =>
+            const Page9(title: 'Scrolling and overlays'),
       ),
     ],
   );

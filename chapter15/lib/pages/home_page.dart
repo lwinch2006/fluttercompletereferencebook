@@ -1,7 +1,6 @@
-import 'package:chapter15/components/chapter15_bottom_navigation_bar.dart';
+import 'package:chapter15/widgets/chapter15_bottom_navigation_bar.dart';
 import 'package:chapter15/extensions/build_context_extensions.dart';
-import 'package:chapter15/extensions/value_notifier_extensions.dart';
-import 'package:chapter15/l10n/l10n_extensions.dart';
+import 'package:chapter15/extensions/locale_extensions.dart';
 import 'package:chapter15/models/locales.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(context.l10n.helloWorld),
+            Text(context.l10n.helloWorld, semanticsLabel: 'Title',),
+            // Text(context.customL10n.helloWorld),
             ElevatedButton(
                 onPressed: () {
                   if (context.localeState.value == Locales.english) {
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                     context.localeState.value = Locales.english;
                   }
                 },
-                child: Text(context.localeState.getLocaleFullName(context)))
+                child: Text(context.localeState.value.getLocaleFullName(context)))
           ],
         ),
       ),
