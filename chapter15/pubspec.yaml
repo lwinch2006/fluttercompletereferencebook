@@ -63,6 +63,25 @@ flutter:
   uses-material-design: true
   generate: true
 
+
+  assets:
+    - assets/cfg.json
+    - assets/images/001.png
+    - assets/images/044.png
+    - assets/images/2.0x/044.png
+    - assets/images/3.0x/044.png
+    - assets/images/4.0x/044.png
+    - assets/images/5.0x/044.png
+    - assets/images/6.0x/044.png
+    - assets/images/7.0x/044.png
+    - assets/images/8.0x/044.png
+
+  fonts:
+    - family: Matrix
+      fonts:
+        - asset: assets/fonts/matrixFont.ttf
+
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

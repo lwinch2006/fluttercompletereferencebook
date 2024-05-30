@@ -9,9 +9,13 @@
   "dateAndTimeFormatters": "Date and time formatters",
   "accessibility": "Accessibility",
   "deepDive": "Deep dive",
-  "hello": "Hello, {userName}",
+  "imagesAndFonts": "Images and fonts",
+  "hello": "Hello, {greeting} {userName}",
   "@hello": {
     "placeholders" : {
+      "greeting": {
+        "type": "String"
+      },
       "userName": {
         "type": "String"
       }

@@ -9,9 +9,13 @@
   "dateAndTimeFormatters": "Dato- og tidsformatere",
   "accessibility": "Tilgjengelighet",
   "deepDive": "Dypdykk",
-  "hello": "Hei, {userName}",
+  "imagesAndFonts": "Bilder og fonter",
+  "hello": "Hei, {greeting} {userName}",
   "@hello": {
     "placeholders" : {
+      "greeting": {
+        "type": "String"
+      },
       "userName": {
         "type": "String"
       }

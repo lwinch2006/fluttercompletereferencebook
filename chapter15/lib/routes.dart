@@ -56,7 +56,7 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page5Path,
-        builder: (context, state) => const Page5(title: 'Gridviews'),
+        builder: (context, state) => Page5(title: context.l10n.imagesAndFonts),
       ),
       GoRoute(
         path: page6Path,
