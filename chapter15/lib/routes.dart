@@ -60,7 +60,7 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page6Path,
-        builder: (context, state) => const Page6(title: 'Slivers 1'),
+        builder: (context, state) => Page6(title: context.l10n.imagesInCustomPainter),
       ),
       GoRoute(
         path: page7Path,

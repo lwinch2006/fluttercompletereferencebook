@@ -10,6 +10,7 @@
   "accessibility": "Accessibility",
   "deepDive": "Deep dive",
   "imagesAndFonts": "Images and fonts",
+  "imagesInCustomPainter": "Loading images in CustomPainter",
   "hello": "Hello, {greeting} {userName}",
   "@hello": {
     "placeholders" : {

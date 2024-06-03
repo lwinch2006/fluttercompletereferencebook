@@ -10,6 +10,7 @@
   "accessibility": "Tilgjengelighet",
   "deepDive": "Dypdykk",
   "imagesAndFonts": "Bilder og fonter",
+  "imagesInCustomPainter": "Laster bilder i CustomPainter",
   "hello": "Hei, {greeting} {userName}",
   "@hello": {
     "placeholders" : {
