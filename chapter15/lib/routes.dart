@@ -64,7 +64,7 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page7Path,
-        builder: (context, state) => const Page7(title: 'Slivers 2'),
+        builder: (context, state) => const Page7(title: 'Animations'),
       ),
       GoRoute(
         path: page8Path,
