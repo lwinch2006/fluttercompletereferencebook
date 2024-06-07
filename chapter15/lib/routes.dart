@@ -68,10 +68,11 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page8Path,
-        builder: (context, state) => const Page8(title: 'Render objects'),
+        builder: (context, state) => const Page8(title: 'Hero animations'),
       ),
       GoRoute(
         path: page9Path,
+        name: page9Path,
         builder: (context, state) =>
             const Page9(title: 'Scrolling and overlays'),
       ),
