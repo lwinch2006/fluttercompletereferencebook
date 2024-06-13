@@ -22,7 +22,8 @@ class _App extends StatelessWidget {
     return ListenableBuilder(
       listenable: context.localeState,
       builder: (context, _) {
-        final router = generateRouter();
+        //final router = generateRouter(); // Standard page to page transitions
+        final router = generateRouterWithCustomTransition(); // Custom page to page transitions
 
         return MaterialApp.router(
           //showSemanticsDebugger: true, // Does not show semantics overlay. Don't know why.
