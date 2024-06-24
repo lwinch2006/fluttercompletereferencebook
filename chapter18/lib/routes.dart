@@ -17,11 +17,11 @@ GoRouter generateRouter() {
       GoRoute(
           path: homePagePath,
           builder: (context, state) {
-            return const HomePage(title: 'Home');
+            return const HomePage(title: 'Form controls');
           }),
       GoRoute(
         path: page1Path,
-        builder: (context, state) => const Page1(title: 'Page 1'),
+        builder: (context, state) => const Page1(title: 'Handling forms'),
       ),
       GoRoute(
         path: page2Path,
