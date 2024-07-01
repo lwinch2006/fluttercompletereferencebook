@@ -25,11 +25,11 @@ GoRouter generateRouter() {
       ),
       GoRoute(
         path: page2Path,
-        builder: (context, state) => const Page2(title: 'Page 2'),
+        builder: (context, state) => const Page2(title: 'Gestures'),
       ),
       GoRoute(
         path: page3Path,
-        builder: (context, state) => const Page3(title: 'Page 3'),
+        builder: (context, state) => const Page3(title: 'Deep dive'),
       ),
     ],
   );

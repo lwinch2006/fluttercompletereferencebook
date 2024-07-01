@@ -17,7 +17,7 @@ class _Page1State extends State<Page1> {
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _passwordFocus = FocusNode();
+  final _passwordFocus = FocusNode(skipTraversal: true);
 
   @override
   void dispose() {
@@ -42,12 +42,17 @@ class _Page1State extends State<Page1> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextFormField(
-                  autofocus: true,
-                  controller: _usernameController,
-                  validator: Validator.validateEmail,
-                  decoration: const AppTextFieldStyle(
-                      icon: Icon(Icons.person), labelText: 'Username'),
+                Focus(
+                  onFocusChange: (value) {
+                    debugPrint(value ? 'focused' : 'unfocused');
+                 },
+                  child: TextFormField(
+                    autofocus: true,
+                    controller: _usernameController,
+                    validator: Validator.validateEmail,
+                    decoration: const AppTextFieldStyle(
+                        icon: Icon(Icons.person), labelText: 'Username'),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -79,28 +84,27 @@ class _Page1State extends State<Page1> {
                   height: 50,
                 ),
                 ListenableBuilder(
-                    listenable: _passwordFocus,
-                    builder: (context, __) {
-                      if (_passwordFocus.hasFocus) {
-                        return const Text('Password field DOES have focux');
-                      }
+                  listenable: _passwordFocus,
+                  builder: (context, __) {
+                    if (_passwordFocus.hasFocus) {
+                      return const Text('Password field DOES have focus');
+                    }
 
-                      return const Text('Password field DOES NOT have focus');
-                    },
+                    return const Text('Password field DOES NOT have focus');
+                  },
                 ),
                 ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      )),
-                      minimumSize:
-                          const MaterialStatePropertyAll(Size(300, 50)),
-                    ),
-                    onPressed: () {
-                      _passwordFocus.requestFocus();
-                    },
-                    child: const Text('Move focus to password field'),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    )),
+                    minimumSize: const MaterialStatePropertyAll(Size(300, 50)),
+                  ),
+                  onPressed: () {
+                    _passwordFocus.requestFocus();
+                  },
+                  child: const Text('Move focus to password field'),
                 ),
               ],
             ),
