@@ -398,3 +398,4 @@ build/
 FlutterAndDartCookbook.iml
 pubspec.lock
 main
+.DS_Store
