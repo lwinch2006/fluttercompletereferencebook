@@ -399,3 +399,4 @@ FlutterAndDartCookbook.iml
 pubspec.lock
 main
 .DS_Store
+lcov.info
