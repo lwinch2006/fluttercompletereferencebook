@@ -395,8 +395,5 @@ FodyWeavers.xsd
 # Misc folders and files
 .idea/
 build/
-FlutterAndDartCookbook.iml
-pubspec.lock
-main
 .DS_Store
-lcov.info
+coverage/
