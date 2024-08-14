@@ -9,6 +9,7 @@ void main() {
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       useMaterial3: true,
+      //visualDensity: VisualDensity(horizontal: -4, vertical: -4)
     ),
     routerConfig: router,
   ));

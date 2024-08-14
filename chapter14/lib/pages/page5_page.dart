@@ -49,7 +49,7 @@ class _Page5State extends State<Page5> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Gridview with cross axis extent'),
+              const Text('Gridview with max cross axis extent'),
               const SizedBox(
                 height: 20,
               ),

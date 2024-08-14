@@ -30,7 +30,9 @@ class _Page3State extends State<Page3> {
 
   @override
   Widget build(BuildContext context) {
+    final dsp = View.maybeOf(context)?.display;
     final size = MediaQuery.of(context).size;
+    final size2 = MediaQuery.sizeOf(context);
     final orientationAsString =
         MediaQuery.of(context).orientation == Orientation.landscape
             ? 'landscape'
@@ -38,16 +40,24 @@ class _Page3State extends State<Page3> {
 
     final textScaleFactor =
         WidgetsBinding.instance.platformDispatcher.textScaleFactor;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: SafeArea(
+          child: Center(
         child: Column(
           children: [
             Text(
                 'Screen size (logical pixels): ${size.width}x${size.height}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
+            Text(
+                'Screen size (logical pixels): ${size2.width}x${size2.height}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
+            Text(
+                'Screen size (logical pixels): ${dsp?.size.width ?? 0}x${dsp?.size.height ?? 0}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
+            Text(
+                'Screen pixel ratio: ${dsp?.devicePixelRatio ?? 0}'),
             ConstrainedBox(
               constraints: BoxConstraints.loose(Size(200, 200)),
               child: const AspectRatio(
@@ -80,8 +90,7 @@ class _Page3State extends State<Page3> {
                     heightFactor: 1 / 4,
                     child: ColoredBox(color: Colors.amberAccent),
                   ),
-                )
-            ),
+                )),
             Flexible(
               child: LayoutBuilder(
                 builder: (context, constraints) {
@@ -138,7 +147,7 @@ class _Page3State extends State<Page3> {
             ),
           ],
         ),
-      ),
+      )),
       bottomNavigationBar: Chapter14BottomNavigationBar(
           currentSelectedIndex: 3, context: context),
     );
