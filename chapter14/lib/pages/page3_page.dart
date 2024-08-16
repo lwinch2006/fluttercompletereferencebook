@@ -56,8 +56,7 @@ class _Page3State extends State<Page3> {
                 'Screen size (logical pixels): ${size2.width}x${size2.height}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
             Text(
                 'Screen size (logical pixels): ${dsp?.size.width ?? 0}x${dsp?.size.height ?? 0}, Orientation: $orientationAsString, Text scale: $textScaleFactor'),
-            Text(
-                'Screen pixel ratio: ${dsp?.devicePixelRatio ?? 0}'),
+            Text('Screen pixel ratio: ${dsp?.devicePixelRatio ?? 0}'),
             ConstrainedBox(
               constraints: BoxConstraints.loose(Size(200, 200)),
               child: const AspectRatio(
