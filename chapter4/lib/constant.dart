@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Constant {
   final String name;
@@ -8,8 +8,12 @@ class Constant {
   const Constant({required this.name, required this.value});
 
   // Named constructor
-  const Constant.euler() : name = 'euler', value = e;
-  const Constant.pi() : name = 'pi', value = pi;
+  const Constant.euler()
+      : name = 'euler',
+        value = e;
+  const Constant.pi()
+      : name = 'pi',
+        value = pi;
 
   // Redirecting constructor
   const Constant.meaningOfLife() : this(name: 'meaning of life', value: 42);
