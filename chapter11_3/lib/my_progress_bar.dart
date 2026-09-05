@@ -8,13 +8,12 @@ class MyProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: MyProgressBarPainter(progressValue: progressValue),
+      foregroundPainter: MyProgressBarPainter(progressValue: progressValue),
       child: SizedBox(
         width: 100,
         height: 100,
         child: Center(
-          child: Text('$progressValue%',
-          style: const TextStyle(fontSize: 20),),
+          child: Text('$progressValue%', style: const TextStyle(fontSize: 20)),
         ),
       ),
     );
