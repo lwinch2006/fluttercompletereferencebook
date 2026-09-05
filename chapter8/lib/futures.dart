@@ -7,15 +7,20 @@ String processInput(String? source) {
 
 Future<String> processInputAsync(String? source) {
   source ??= '';
-  return Future<String>.delayed(const Duration(seconds: 2), () => 'Modified ${source!.toUpperCase().replaceAll(' ', '')}');
+  return Future<String>.delayed(const Duration(seconds: 2),
+      () => 'Modified ${source!.toUpperCase().replaceAll(' ', '')}');
 }
 
 Future<String> futureWithoutAsync() => Future(() => '>>> future without async');
 Future<String> futureWithAsync() async => '>>> future with async';
-Future<String> futureMicrotask() => Future.microtask(() => '>>> future microtask');
-Future<String> futureWithValue() => Future<String>.value('>>> future with value');
-Future<String> futureWithSync() => Future<String>.sync(() => '>>> future with sync constructor');
-Future<String> futureWithDelay() => Future<String>.delayed(Duration(milliseconds: 100), () => '>>> future with delay');
+Future<String> futureMicrotask() =>
+    Future.microtask(() => '>>> future microtask');
+Future<String> futureWithValue() =>
+    Future<String>.value('>>> future with value');
+Future<String> futureWithSync() =>
+    Future<String>.sync(() => '>>> future with sync constructor');
+Future<String> futureWithDelay() => Future<String>.delayed(
+    Duration(milliseconds: 100), () => '>>> future with delay');
 
 Future<String> one() async => '1';
 Future<String> two() async => '2';
@@ -38,7 +43,8 @@ Future<void> future4() async {
   await Future.delayed(Duration(milliseconds: 300), () {});
 }
 
-void doCalculation(int value, {void Function(int)? onSuccess, void Function()? onError}) {
+void doCalculation(int value,
+    {void Function(int)? onSuccess, void Function()? onError}) {
   value *= 2;
 
   if (value == 0) {
@@ -58,11 +64,22 @@ Future<String> future5() async {
   final completer = Completer<String>();
 
   doCalculation(111,
-    onSuccess: (value) => completer.complete('Value: $value'),
-    onError: () => completer.completeError(Exception('Value is zero'))
-  );
+      onSuccess: (value) =>
+          completer.complete('Completer<>.complete(): Value: $value'),
+      onError: () => completer.completeError(
+          Exception('Completer<>.completeError(): Value is zero')));
 
   return completer.future;
 }
 
+Future<String> future6() async {
+  return Future.value('Future 6');
+}
 
+Future<String> future7() {
+  return Future(() => 'Future 7');
+}
+
+Future<String> future8() async {
+  return "Future 8";
+}

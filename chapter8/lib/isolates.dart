@@ -18,7 +18,8 @@ Future<void> isolatesFunc1() async {
 
 Future<void> isolatesFunc2_1() async {
   final receivePort = ReceivePort();
-  final isolate = await Isolate.spawn<SendPort>(_isolatesFunc2_2, receivePort.sendPort);
+  final isolate = await Isolate.spawn<SendPort>(
+      _workerIsolateEntryPoint, receivePort.sendPort);
 
   var receiveCount = 0;
   receivePort.listen((message) {
@@ -40,7 +41,8 @@ Future<void> isolatesFunc2_1() async {
 
 Future<void> isolatesFunc2_3() async {
   final receivePort = ReceivePort();
-  final isolate = await Isolate.spawn<SendPort>(_isolatesFunc2_2, receivePort.sendPort);
+  final isolate = await Isolate.spawn<SendPort>(
+      _workerIsolateEntryPoint, receivePort.sendPort);
   final broadcast = receivePort.asBroadcastStream();
   final sendPort = await broadcast.first as SendPort;
 
@@ -58,7 +60,7 @@ Future<void> isolatesFunc2_3() async {
   });
 }
 
-void _isolatesFunc2_2(SendPort sendPort) {
+void _workerIsolateEntryPoint(SendPort sendPort) {
   final receivePort = ReceivePort();
   sendPort.send(receivePort.sendPort);
 
@@ -93,22 +95,16 @@ void isolatesFunc4() {
   print('isolatesFunc4() - start');
 
   runZonedGuarded(() {
-    print('runZonedGuarded()');
+    print('runZonedGuarded');
 
     Future.delayed(Duration(seconds: 1), () {
-      print('Future.delayed()');
+      print('runZonedGuarded - Future.delayed()');
     });
 
     throw Exception('Exception happened');
-
   }, (error, stack) {
     print(error);
   });
 
   print('isolatesFunc4() - end');
 }
-
-
-
-
-
