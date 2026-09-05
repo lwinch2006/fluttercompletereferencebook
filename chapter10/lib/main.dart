@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
-          background: Colors.white,
+          //background: Colors.white,
         ),
         useMaterial3: true,
       ),
