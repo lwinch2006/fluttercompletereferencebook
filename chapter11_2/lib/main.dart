@@ -7,7 +7,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final RoundedRectangleBorder _borderShape = const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(5)));
+    borderRadius: BorderRadius.all(Radius.circular(5)),
+  );
 
   const MyApp({super.key});
 
@@ -16,21 +17,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         useMaterial3: true,
         bottomSheetTheme: BottomSheetThemeData(
-            shape: _borderShape),
-        dialogTheme: DialogTheme(
-            shape: _borderShape),
+          shape: _borderShape,
+        ),
+        dialogTheme: DialogThemeData(
+          shape: _borderShape,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             shape: MaterialStatePropertyAll<OutlinedBorder>(
-                _borderShape)
+              _borderShape,
             ),
           ),
         ),
+      ),
       debugShowCheckedModeBanner: false,
-      home: const MyLayout(title: 'Flutter Demo Home Page'),
+      home: const MyLayout(
+        title: 'Flutter Demo Home Page',
+      ),
     );
   }
 }
