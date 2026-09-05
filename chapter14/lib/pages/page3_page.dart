@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:chapter14/breakpoints.dart';
 import 'package:chapter14/components/chapter14_bottom_navigation_bar.dart';
 import 'package:chapter14/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 class Page3 extends StatefulWidget {
@@ -15,7 +17,9 @@ class Page3 extends StatefulWidget {
   State<StatefulWidget> createState() => _Page3State();
 }
 
-class _Page3State extends State<Page3> {
+class _Page3State extends State<Page3> with WidgetsBindingObserver {
+  FlutterView? _view;
+
   final _items = <String>[
     'Item 1',
     'Item 2',
@@ -28,11 +32,46 @@ class _Page3State extends State<Page3> {
     'Item 9'
   ];
 
+  @override @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override void dispose() {
+    super.dispose();
+    _view = null;
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _view = View.maybeOf(context);
+  }
+
+  @override
+  void didChangeMetrics() {
+    final display = _view?.display;
+    if (display == null) {
+      return;
+    }
+
+    if (display.size.width / display.devicePixelRatio < 600.0) {
+      SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+        DeviceOrientation.portraitUp
+      ]);
+    } else {
+      SystemChrome.setPreferredOrientations(<DeviceOrientation>[]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final dsp = View.maybeOf(context)?.display;
     final size = MediaQuery.of(context).size;
     final size2 = MediaQuery.sizeOf(context);
+
     final orientationAsString =
         MediaQuery.of(context).orientation == Orientation.landscape
             ? 'landscape'

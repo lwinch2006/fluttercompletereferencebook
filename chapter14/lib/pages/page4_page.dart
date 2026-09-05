@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:chapter14/components/chapter14_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class _Page4State extends State<Page4> {
     margin: const EdgeInsets.all(5),
   );
 
-  final _reorderableList = List<int>.generate(20, (index) => index+1);
+  final _reorderableList = List<int>.generate(20, (index) => index + 1);
 
   final scrollController1 = ScrollController();
   final scrollController2 = ScrollController();
@@ -125,7 +126,7 @@ class _Page4State extends State<Page4> {
             width: 20,
           ),
           SizedBox(
-            height: 160,
+            //height: 300,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -144,7 +145,10 @@ class _Page4State extends State<Page4> {
             child: ReorderableListView.builder(
               itemCount: _reorderableList.length,
               itemBuilder: (context, index) {
-                return Text('Item ${_reorderableList[index]}', key: Key('${_reorderableList[index]}'),);
+                return Text(
+                  'Item ${_reorderableList[index]}',
+                  key: Key('${_reorderableList[index]}'),
+                );
               },
               onReorder: (oldIndex, newIndex) {
                 debugPrint('Old index: $oldIndex, New index: $newIndex');
