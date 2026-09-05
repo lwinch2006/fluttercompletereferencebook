@@ -1,17 +1,17 @@
 import 'package:chapter15/extensions/build_context_extensions.dart';
-import 'package:chapter15/l10n/custom_app_localizations.dart';
-import 'package:chapter15/l10n/custom_app_localizations_delegate.dart';
-import 'package:chapter15/state/locale_state_widget.dart';
+import 'package:chapter15/l10n/locales/app_localizations.dart';
 import 'package:chapter15/models/locales.dart';
 import 'package:chapter15/routes.dart';
+import 'package:chapter15/state/locale_state_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  runApp(LocaleStateWidget(
-    localeState: ValueNotifier<Locale>(Locales.english),
-    child: const _App(),
-  ));
+  runApp(
+    LocaleStateWidget(
+      localeState: ValueNotifier<Locale>(Locales.english),
+      child: const _App(),
+    ),
+  );
 }
 
 class _App extends StatelessWidget {
@@ -45,7 +45,6 @@ class _App extends StatelessWidget {
           //   GlobalWidgetsLocalizations.delegate
           // ],
           // supportedLocales: CustomAppLocalizations.locales,
-
           locale: context.localeState.value,
         );
       },
