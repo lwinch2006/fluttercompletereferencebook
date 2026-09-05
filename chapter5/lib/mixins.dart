@@ -22,9 +22,3 @@ mixin StringUtils {
   // not advisable to make abstract methods in mixins
   void testMethod();
 }
-
-
-
-
-
-
