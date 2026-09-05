@@ -64,26 +64,31 @@ class _TodosPageState extends State<TodosPage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
+        color: Colors.lightGreen,
+        child: Center(
           child: ListView.builder(
-        //itemCount: todoItems.length,
-        itemCount: appState.todoItems.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            //title: Text(todoItems[index].title),
-            title: Text(appState.todoItems[index].title),
-            onTap: () {
-              // This method does not allowing using const TodoDetailsPage() constructor
-              // showTodoDetailsWithPush(index);
+            //itemCount: todoItems.length,
+            itemCount: appState.todoItems.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                tileColor: Colors.red,
+                //title: Text(todoItems[index].title),
+                title: Text(appState.todoItems[index].title),
+                onTap: () {
+                  // This method does not allowing using const TodoDetailsPage() constructor
+                  // showTodoDetailsWithPush(index);
 
-              // This method can be difficult to use when passing arguments between many Routes/Pages
-              // showTodoDetailsWithPushNamed(index);
+                  // This method can be difficult to use when passing arguments between many Routes/Pages
+                  // showTodoDetailsWithPushNamed(index);
 
-              showTodoDetailsWithInheritedWidget(index);
+                  showTodoDetailsWithInheritedWidget(index);
+                },
+              );
             },
-          );
-        },
-      )),
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
