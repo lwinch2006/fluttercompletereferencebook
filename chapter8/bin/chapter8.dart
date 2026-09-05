@@ -60,38 +60,34 @@ void workWithFutures() {
   one().then((value) {
     print(value);
     return two();
-  })
-      .then((value) {
+  }).then((value) {
     print(value);
     return three();
-  })
-      .then((value) {
+  }).then((value) {
     print(value);
-  })
-      .catchError((e) {
+  }).catchError((e) {
     print('Error: $e');
-  })
-      .whenComplete(() {
+  }).whenComplete(() {
     print('finally');
   });
 
-  print('');
+  print('Running Future.wait()');
   future1().then(print);
 
-  print('');
+  print('Running code with Completer<>');
   future5().then(print);
 }
 
 Future<void> workWithStreams() async {
   print('Working with streams');
 
-  final stream1 = intNumbersStream(numCount: 3);
+  final stream1 = intNumbersStream(numCount: 3).asBroadcastStream();
   stream1.listen((event) {
     print('Received number from stream (method 1): $event');
   });
 
   final stream2 = intNumbersStream(numCount: 3);
-  await for(var event in stream2) {
+  await for (var event in stream2) {
     print('Received number from stream (method 2): $event');
   }
 
@@ -101,7 +97,9 @@ Future<void> workWithStreams() async {
   });
 
   final rnd = Random();
-  final stream4 = Stream<int>.periodic(Duration(seconds: 1), (_) => rnd.nextInt(100)).take(5);
+  final stream4 =
+      Stream<int>.periodic(Duration(seconds: 1), (_) => rnd.nextInt(100))
+          .take(5);
 
   var countDown1 = 3;
   final stream5 = stream4.where((event) => countDown1 > 0 && event.isEven);
@@ -111,7 +109,9 @@ Future<void> workWithStreams() async {
   });
 
   var countDown2 = 3;
-  final stream6 = Stream<int>.periodic(Duration(seconds: 1), (_) => rnd.nextInt(100)).take(5);
+  final stream6 =
+      Stream<int>.periodic(Duration(seconds: 1), (_) => rnd.nextInt(100))
+          .take(5);
   final stream7 = stream6
       .where((event) => countDown2 > 0 && event.isEven)
       .map((event) => '$event');
@@ -126,7 +126,7 @@ Future<void> workWithStreams() async {
 
   final stream9 = intNumbersStream3(numCount: 3);
   for (var event in stream9) {
-    print('Received number from stream9: $event');
+    print('Received number from synchronous stream9: $event');
   }
 }
 
@@ -140,15 +140,4 @@ Future<void> workWithIsolates() async {
 
   isolatesFunc3();
   isolatesFunc4();
-
-
-
-
-
 }
-
-
-
-
-
-
