@@ -1,11 +1,7 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class _Annotation3 {
   const _Annotation3();
 }
 
 const dkaEnabled = _Annotation3();
-
-
-
-

@@ -1,4 +1,5 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
+
 class Annotation4 {
   final int number;
   final String str;
