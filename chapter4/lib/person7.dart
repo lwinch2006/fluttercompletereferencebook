@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person7 {
   String _firstName;
@@ -15,8 +15,7 @@ class Person7 {
   @override
   String toString() => '$_firstName $_lastName';
 
-  Person7 operator+(Person7 second) {
+  Person7 operator +(Person7 second) {
     return Person7('Kid of $_firstName and ${second.firstName}', _lastName);
   }
 }
-

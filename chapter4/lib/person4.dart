@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person4 {
   late String firstName;
@@ -8,7 +8,6 @@ class Person4 {
     this.firstName = firstName;
     this.lastName = lastName;
   }
-
 
   @override
   String toString() => '$firstName $lastName';

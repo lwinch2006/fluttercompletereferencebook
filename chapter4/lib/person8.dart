@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person8 {
   Name name;
@@ -9,10 +9,7 @@ class Person8 {
   String toString() => '$name $age';
 
   Person8 copyWith({Name? name, int? age}) {
-    return Person8(
-      name ?? Name(this.name.value),
-      age ?? this.age
-    );
+    return Person8(name ?? Name(this.name.value), age ?? this.age);
   }
 }
 

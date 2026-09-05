@@ -1,9 +1,8 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class People {
   final List<Person8> people;
   const People(this.people);
-
 
   @override
   String toString() {
@@ -31,4 +30,3 @@ class People {
     return People(newPeople);
   }
 }
-

@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person3 {
   String firstName;
@@ -10,9 +10,9 @@ class Person3 {
   //   this.lastName = lastName;
   // }
 
-  Person3(String firstName, String lastName) :
-    firstName = firstName,
-    lastName = lastName;
+  Person3(String firstName, String lastName)
+      : firstName = firstName,
+        lastName = lastName;
 
   @override
   String toString() => '$firstName $lastName';

@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person5 {
   String firstName;
@@ -6,7 +6,6 @@ class Person5 {
 
   // Named parameter can not be private (with underscore)
   Person5({required this.firstName, this.lastName = ''});
-
 
   @override
   String toString() => '$firstName $lastName';

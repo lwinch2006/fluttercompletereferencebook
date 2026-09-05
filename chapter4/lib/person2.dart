@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person2 {
   String? _firstName;
@@ -9,8 +9,8 @@ class Person2 {
 
   // Named constructors
   Person2.constructor2(this._firstName, this._lastName);
-  Person2.constructor3(String? firstName, String? lastName) :
-        _firstName = firstName,
+  Person2.constructor3(String? firstName, String? lastName)
+      : _firstName = firstName,
         _lastName = lastName;
 
   // Private constructors
