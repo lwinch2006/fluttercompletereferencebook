@@ -1,48 +1,73 @@
 // import 'package:chapter4/chapter4lib.dart' as chapter4; // Imports all public things from library
 // import 'package:chapter4/chapter4lib.dart' as chapter4 show Person, Address, getNewPerson; // Imports some public things from library
-//import 'package:chapter4/chapter4lib.dart' as chapter4 hide getNewPerson2; // Imports all except hidden public things from library, "as" declares alias for library
+// import 'package:chapter4/chapter4lib.dart' as chapter4 hide getNewPerson2; // Imports all except hidden public things from library, "as" declares alias for library
+
+library chapter4;
 
 import 'dart:math';
 import 'dart:mirrors';
 
-
-
-
-
-part '../lib/chapter4lib.dart';
-part '../lib/person2.dart';
-part '../lib/person3.dart';
-part '../lib/person4.dart';
-part '../lib/person5.dart';
-part '../lib/singleton.dart';
-part '../lib/person6.dart';
-part '../lib/constant.dart';
-part '../lib/person7.dart';
-part '../lib/hello_world.dart';
-part '../lib/greeting_printer.dart';
-part '../lib/person8.dart';
-part '../lib/people.dart';
-part '../lib/people2.dart';
 part '../lib/annotation1.dart';
 part '../lib/annotation2.dart';
 part '../lib/annotation3.dart';
 part '../lib/annotation4.dart';
+part '../lib/chapter4lib.dart';
+part '../lib/constant.dart';
+part '../lib/greeting_printer.dart';
+part '../lib/hello_world.dart';
+part '../lib/people.dart';
+part '../lib/people2.dart';
+part '../lib/person2.dart';
+part '../lib/person3.dart';
+part '../lib/person4.dart';
+part '../lib/person5.dart';
+part '../lib/person6.dart';
+part '../lib/person7.dart';
+part '../lib/person8.dart';
 part '../lib/person9.dart';
+part '../lib/singleton.dart';
 
 @Annotation1()
 @Annotation2(111)
 @dkaEnabled
 void main(List<String> arguments) {
-
   var person = Person('John', 'Doe');
   print('Person: $person');
   print('Person: ${person.toUpperCase()}');
 
+  var Person(:firstName, :lastName) = person;
+  var Person(firstName: test1) = person;
+
+  print('Deconstruction #1: $firstName $lastName');
+  print('Deconstruction #2: $test1');
+
+  if (person case Person(:String firstName, :String lastName)) {
+    print('Deconstruction #3: $firstName $lastName');
+  }
+
+  if (person
+      case Person(firstName: String firstNameVar, lastName: var lastNameVar)) {
+    print('Deconstruction #4: $firstNameVar $lastNameVar');
+  }
+
+  if (person case Person(firstName: == 'John')) {
+    print('If case with condition #1: Found person with name John');
+  }
+
+  if (person case Person(firstName: String firstNameVar)
+      when firstNameVar == 'John') {
+    print('If case with condition #2: Found person with name $firstNameVar');
+  }
+
+  if (person case Person(firstName: String(length: > 3))) {
+    print(
+        'If case with condition #2: Found person with name length > 3 ${person.firstName}');
+  }
+
   // Cascade notation
   person
-  ..printFullName()
-  ..printFullNameInUpperCase();
-
+    ..printFullName()
+    ..printFullNameInUpperCase();
 
   Person? person2 = getNewPerson();
 
@@ -52,12 +77,11 @@ void main(List<String> arguments) {
     ..printFullNameInUpperCase();
 
   var person3 = Person()
-  ..firstName = 'John'
-  ..lastName = 'Doe'
-  ..address = (Address()
+    ..firstName = 'John'
+    ..lastName = 'Doe'
+    ..address = (Address()
       ..country = 'Norway'
-      ..city = 'Oslo'
-  );
+      ..city = 'Oslo');
 
   print('Person: $person3');
 
@@ -143,7 +167,7 @@ void main(List<String> arguments) {
   print('Person 16 (before change): $person16');
   print('Person 17 (before change): $person17');
 
-  person16.name.value  = 'Jake';
+  person16.name.value = 'Jake';
   person16.age = 30;
   print('Person 16 (after change): $person16');
   print('Person 17 (after change): $person17');
@@ -155,7 +179,7 @@ void main(List<String> arguments) {
   print('Person 18 (before change): $person18');
   print('Person 19 (before change): $person19');
 
-  person18.name.value  = 'Jake';
+  person18.name.value = 'Jake';
   person18.age = 30;
   print('Person 18 (after change): $person18');
   print('Person 19 (after change): $person19');
@@ -167,7 +191,7 @@ void main(List<String> arguments) {
   print('Person 20 (before change): $person20');
   print('Person 21 (before change): $person21');
 
-  person20.name.value  = 'Jake';
+  person20.name.value = 'Jake';
   person20.age = 50;
   print('Person 20 (after change): $person20');
   print('Person 21 (after change): $person21');
@@ -213,7 +237,8 @@ void main(List<String> arguments) {
   print('Top level: ${exampleType.isTopLevel}');
 
   for (final annotation in exampleType.metadata) {
-    print('${annotation.type.originalDeclaration.reflectedType} with value: ${annotation.reflectee}');
+    print(
+        '${annotation.type.originalDeclaration.reflectedType} with value: ${annotation.reflectee}');
   }
 
   for (final declaration in exampleType.declarations.entries) {
@@ -233,5 +258,4 @@ void main(List<String> arguments) {
   final person23 = init(11, Person9.new);
   print('Person 22 age: ${person22.age}');
   print('Person 23 age: ${person23.age}');
-
 }

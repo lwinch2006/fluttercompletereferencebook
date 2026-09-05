@@ -1,4 +1,4 @@
-part of '../bin/chapter4bin.dart';
+part of chapter4;
 
 class Person {
   String? firstName;
@@ -34,6 +34,7 @@ Person? getNewPerson2() {
   return Person('John', 'Doe');
 }
 
-Person? _getNewPerson3() { // Private method
+Person? _getNewPerson3() {
+  // Private method
   return Person('John', 'Doe');
 }
