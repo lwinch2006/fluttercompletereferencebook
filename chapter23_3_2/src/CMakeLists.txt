@@ -15,3 +15,8 @@ set_target_properties(chapter23_3_2 PROPERTIES
 )
 
 target_compile_definitions(chapter23_3_2 PUBLIC DART_SHARED_LIB)
+
+if (ANDROID)
+  # Support Android 15 16k page size.
+  target_link_options(chapter23_3_2 PRIVATE "-Wl,-z,max-page-size=16384")
+endif()
