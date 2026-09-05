@@ -1,6 +1,5 @@
-
-import 'package:chapter6/generics.dart' as generics;
 import 'package:chapter6/collections.dart' as collections;
+import 'package:chapter6/generics.dart' as generics;
 
 void main(List<String> arguments) {
   print('Generics and collections');
@@ -28,4 +27,7 @@ void main(List<String> arguments) {
 
   print('');
   collections.collections5();
+
+  print('');
+  collections.collections7();
 }
